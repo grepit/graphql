@@ -3,6 +3,14 @@ tokenVal="NEED_TO_PUT_THE_TOKEN_HERE"
 # find the issue ids on your repo just 
 curl -H "Authorization: token $tokenVal" -X POST -d  " { \"query\": \"query FindIssueID { repository(owner:"grepit", name:"graphql") { issue(number:1) { id } } }\"  } " https://api.github.com/graphql 
 
+# list the login of the token
+curl -H "Authorization: token $tokenVal" -X POST -d " \
+ { \
+   \"query\": \"query { viewer { login }}\" \
+ } \
+" https://api.github.com/graphql
+
+
 # this is a mutation very similar to update/post
 curl -X POST \
   https://api.github.com/graphql \
